@@ -13,7 +13,7 @@ def extract_audio(video_file):
 
     output_folder = "data"
     output_folder_2 = "extracted_audio"
-    output_path = os.path.join(output_folder, output_folder_2, video_file)
+    output_path = os.path.join(output_folder, output_folder_2, video_file[:-4])
     output_path = f'{output_path}.wav'
 
     video.audio.write_audiofile(output_path)
