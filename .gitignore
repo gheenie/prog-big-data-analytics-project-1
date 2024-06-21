@@ -2,6 +2,9 @@ data/video_output
 data/download_log.txt
 data/extracted_audio
 data/transcribed_text
+data/sentiment_analysis
+data/translated_text
+data/extracted_emotions
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
