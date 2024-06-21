@@ -1,3 +1,4 @@
+import os
 from concurrent.futures import ThreadPoolExecutor
 import threading
 import time
@@ -8,10 +9,14 @@ from pytube import YouTube
 
 
 def download_video(url):
+    output_folder = "data"
+    output_folder_2 = "video_output"
+    output_path = os.path.join(output_folder, output_folder_2)
+    
     yt = YouTube(url)
     stream = yt.streams.get_highest_resolution()
     print(f"Downloading video: {yt.title}")
-    stream.download(output_path='data/video_output')
+    stream.download(output_path=output_path)
     print(f"Download completed: {yt.title}")
     log_downloaded_video(url, yt.title)
 
