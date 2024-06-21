@@ -1,4 +1,4 @@
-To run the scripts in a self-contained environment, follow the steps below.
+To run the scripts in a self-contained environment for the first time, follow the steps below.
 
 1. Change your current working directory to the project root
 2. Create a virtual environment
@@ -15,3 +15,9 @@ export PYTHONPATH=$(pwd)
 pip install requirements.txt
 ```
 5. Run the python scripts from the project root
+6. When finished, deactivate your virtual environment
+```
+deactivate
+```
+
+Whenever you need to revisit the scripts, repeat step 1 and 3, then step 6 when finished.
