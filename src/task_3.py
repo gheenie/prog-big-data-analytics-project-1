@@ -1,3 +1,5 @@
+from concurrent.futures import ThreadPoolExecutor
+import threading
 import time
 
 from pytube import YouTube
@@ -17,3 +19,20 @@ def serial_download(urls):
         download_video(url)
     end = time.perf_counter()
     print(f'Serial download finished in {end - start} seconds')
+
+
+semaphore = threading.Semaphore(5)
+
+
+def download_video_with_semaphores(url):
+    semaphore.acquire()
+    download_video(url)
+    semaphore.release()
+
+
+def parallel_download(urls):
+    start = time.perf_counter()
+    with ThreadPoolExecutor() as executor:
+        executor.map(download_video_with_semaphores, urls)
+    end = time.perf_counter()
+    print(f'Parallel download finished in {end - start} seconds')
