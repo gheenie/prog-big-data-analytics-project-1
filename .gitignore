@@ -1,5 +1,6 @@
 data/video_output
 data/download_log.txt
+data/extracted_audio
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
