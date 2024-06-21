@@ -18,6 +18,7 @@ def download_video(url):
     print(f"Downloading video: {yt.title}")
     stream.download(output_path=output_path)
     print(f"Download completed: {yt.title}")
+    
     log_downloaded_video(url, yt.title)
 
 
