@@ -14,10 +14,13 @@ export PYTHONPATH=$(pwd)
 ```
 pip install requirements.txt
 ```
-5. Run the python scripts from the project root
+5. Test the entire project by running index.py from the project root
+```
+python src/index.py
+```
 6. When finished, deactivate your virtual environment
 ```
 deactivate
 ```
 
-Whenever you need to revisit the scripts, repeat step 1 and 3, then step 6 when finished.
+Whenever you want to revisit the project after the first time, skip steps 2 and 4.
