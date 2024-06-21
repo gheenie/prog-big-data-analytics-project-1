@@ -2,6 +2,8 @@ from concurrent.futures import ThreadPoolExecutor
 import threading
 import time
 
+from task_4 import log_downloaded_video
+
 from pytube import YouTube
 
 
@@ -11,6 +13,7 @@ def download_video(url):
     print(f"Downloading video: {yt.title}")
     stream.download(output_path='data/video_output')
     print(f"Download completed: {yt.title}")
+    log_downloaded_video(url, yt.title)
 
 
 def serial_download(urls):
