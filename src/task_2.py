@@ -1,6 +1,3 @@
-import os
-
-
 def extract_urls(input_path):
     with open(input_path, 'r') as file:
         urls = file.readlines()
