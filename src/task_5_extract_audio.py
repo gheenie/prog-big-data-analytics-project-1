@@ -1,3 +1,4 @@
+import asyncio
 import os
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
 import time
@@ -44,7 +45,24 @@ def threading_extract(video_files):
     print(f'Threading audio extraction finished in {end - start} seconds')
 
 
-def concurrent_extract(video_files):
+async def extract_audio_async(video_file):
+    input_folder = "data"
+    input_folder_2 = "video_output"
+    input_path = os.path.join(input_folder, input_folder_2, video_file)
+
+    video = mp.VideoFileClip(input_path)
+
+    output_folder = "data"
+    output_folder_2 = "extracted_audio"
+    output_path = os.path.join(output_folder, output_folder_2, video_file[:-4])
+    output_path = f'{output_path}.wav'
+
+    video.audio.write_audiofile(output_path)
+
+
+async def concurrent_extract(video_files):
     start = time.perf_counter()
+    coroutines = [extract_audio_async(video_file) for video_file in video_files]
+    await asyncio.gather(*coroutines)
     end = time.perf_counter()
     print(f'Concurrent audio extraction finished in {end - start} seconds')
