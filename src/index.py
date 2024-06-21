@@ -7,11 +7,7 @@ from task_5_extract_audio import parallel_extract
 
 
 if __name__ == '__main__':
-    input_folder = "data"
-    input_filename = "video_urls.txt"
-    input_path = os.path.join(input_folder, input_filename)
-
-    urls = extract_urls(input_path)
+    urls = extract_urls()
 
     output_folder = "data"
     output_folder_2 = "video_output"
