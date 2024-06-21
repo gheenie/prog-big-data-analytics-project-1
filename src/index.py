@@ -19,8 +19,8 @@ if __name__ == '__main__':
     output_path = os.path.join(output_folder, output_folder_2)
     Path(output_path).mkdir(parents=True, exist_ok=True)
 
-    # serial_download(urls)
-    # parallel_download(urls)
+    serial_download(urls)
+    parallel_download(urls)
 
     # Extract file paths of the videos.
     video_files = [f for f in os.listdir(output_path)]
@@ -31,9 +31,9 @@ if __name__ == '__main__':
     output_path = os.path.join(output_folder, output_folder_2)
     Path(output_path).mkdir(parents=True, exist_ok=True)
 
-    # multiprocessing_extract(video_files)
-    # serial_extract(video_files)
-    # threading_extract(video_files)
+    multiprocessing_extract(video_files)
+    serial_extract(video_files)
+    threading_extract(video_files)
     asyncio.run(concurrent_extract(video_files))
 
     audio_files = [f for f in os.listdir(output_path)]
@@ -44,7 +44,7 @@ if __name__ == '__main__':
     output_path = os.path.join(output_folder, output_folder_2)
     Path(output_path).mkdir(parents=True, exist_ok=True)
 
-    # parallel_transcribe(audio_files)
+    parallel_transcribe(audio_files)
 
     text_files = [f for f in os.listdir(output_path)]
     print(text_files)
@@ -62,6 +62,6 @@ if __name__ == '__main__':
     output_path = os.path.join(output_folder, output_folder_2)
     Path(output_path).mkdir(parents=True, exist_ok=True)
 
-    # parallel_sentiment(text_files)
-    # parallel_translate(text_files)
-    # parallel_extract_emotions(text_files)
+    parallel_sentiment(text_files)
+    parallel_translate(text_files)
+    parallel_extract_emotions(text_files)
