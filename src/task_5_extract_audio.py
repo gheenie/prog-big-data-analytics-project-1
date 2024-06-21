@@ -1,5 +1,5 @@
 import os
-from concurrent.futures import ProcessPoolExecutor
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
 
 import moviepy.editor as mp
 
@@ -19,6 +19,20 @@ def extract_audio(video_file):
     video.audio.write_audiofile(output_path)
 
 
-def parallel_extract(video_files):
+def multiprocessing_extract(video_files):
     with ProcessPoolExecutor() as executor:
         executor.map(extract_audio, video_files)
+
+
+def serial_extract(video_files):
+    for video_file in video_files:
+        extract_audio(video_file)
+
+
+def threading_extract(video_files):
+    with ThreadPoolExecutor() as executor:
+        executor.map(extract_audio, video_files)
+
+
+def concurrent_extract(video_files):
+    pass

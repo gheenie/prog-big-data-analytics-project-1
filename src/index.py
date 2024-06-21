@@ -3,7 +3,7 @@ from pathlib import Path
 
 from task_2 import extract_urls
 from task_3 import serial_download, parallel_download
-from task_5_extract_audio import parallel_extract
+from task_5_extract_audio import multiprocessing_extract, serial_extract, threading_extract, concurrent_extract
 from task_5_transcribe_audio import parallel_transcribe
 from task_5_sentiment_analysis import parallel_sentiment
 from task_5_translate_language import parallel_translate
@@ -30,7 +30,10 @@ if __name__ == '__main__':
     output_path = os.path.join(output_folder, output_folder_2)
     Path(output_path).mkdir(parents=True, exist_ok=True)
 
-    parallel_extract(video_files)
+    multiprocessing_extract(video_files)
+    serial_extract(video_files)
+    threading_extract(video_files)
+    concurrent_extract(video_files)
 
     audio_files = [f for f in os.listdir(output_path)]
     print(audio_files)
