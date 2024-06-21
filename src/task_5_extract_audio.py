@@ -1,5 +1,6 @@
 import os
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+import time
 
 import moviepy.editor as mp
 
@@ -20,19 +21,30 @@ def extract_audio(video_file):
 
 
 def multiprocessing_extract(video_files):
+    start = time.perf_counter()
     with ProcessPoolExecutor() as executor:
         executor.map(extract_audio, video_files)
+    end = time.perf_counter()
+    print(f'Multiprocessing audio extraction finished in {end - start} seconds')
 
 
 def serial_extract(video_files):
+    start = time.perf_counter()
     for video_file in video_files:
         extract_audio(video_file)
+    end = time.perf_counter()
+    print(f'Serial audio extraction finished in {end - start} seconds')
 
 
 def threading_extract(video_files):
+    start = time.perf_counter()
     with ThreadPoolExecutor() as executor:
         executor.map(extract_audio, video_files)
+    end = time.perf_counter()
+    print(f'Threading audio extraction finished in {end - start} seconds')
 
 
 def concurrent_extract(video_files):
-    pass
+    start = time.perf_counter()
+    end = time.perf_counter()
+    print(f'Concurrent audio extraction finished in {end - start} seconds')
